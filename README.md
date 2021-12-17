@@ -1,2 +1,2 @@
 # ReadPaper
-Papers and notes.
+Papers and notes about deep learning models.

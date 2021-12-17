@@ -1,4 +1,4 @@
-# **Informer: Beyond Efficient Transformer for Long SequenceTime-Series Forecastin**g
+# **Informer: Beyond Efficient Transformer for Long SequenceTime-Series Forecasting**[[Github]](https://github.com/zhouhaoyi/Informer2020)
 
 ## 1. Motivation
 
@@ -32,7 +32,7 @@ $$
 $$
 &emsp; 其中，$\mathcal k \rm(q_{\mathcal i}, k_{\mathcal j}) = e^{\frac{q_{\mathcal i}k_{\mathcal j}^{T}}{\sqrt{d}}}$
 
-###3.2 *ProbSparse* Self-attention
+###3.2 *ProbSparse* Self-attention  
 &emsp; (1) 启发： The “sparsity” self-attention score forms a long tail distribution (see Appendix C for details), i.e., a few dot-product pairs contribute to the major attention, andothers generate trivia attention.
 &emsp; (2) Define  the $i$-th query's sparsity measurement as:
 $$
@@ -53,7 +53,7 @@ $$
 ### 3.3 Model
 &emsp; Informer 遵循transformer模型的Encoder-Decoder结构，可以一次性输出预测长序列的全部结果。  
 
-<img src="./figures/Informer_01.png" style="zoom:50%;" align="center">;
+<img src="./figures/Informer_01.png" style="zoom:30%;" align="center">;
 
 #### 3.3.1 Encoder
 <img src="./figures/Informer_02.png" style="zoom:60%;" align="center">   

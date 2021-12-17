@@ -1,17 +1,17 @@
-# Swin Transformer: Hierarchical Vision Transformer using Shifted Windows
-<img src="./figures/swin_01.png" style="zoom:60%;" align="center">.
-Swin Transformer 在各大CV任务上表现出色，网络中重要的组件按照前向传播顺序依次为： 
-&emsp; 1. Patch Embedding
-&emsp; 2. W-MSA
-&emsp; 3. SW-MSA
-&emsp; 4. Patch Merging
+# Swin Transformer: Hierarchical Vision Transformer using Shifted Windows  
+<img src="./figures/swin_01.png" style="zoom:60%;" align="center">.  
+Swin Transformer 在各大CV任务上表现出色，网络中重要的组件按照前向传播顺序依次为：   
+&emsp; 1. Patch Embedding  
+&emsp; 2. W-MSA  
+&emsp; 3. SW-MSA  
+&emsp; 4. Patch Merging  
 接下来将依次介绍这几个组件。
 
-## 1. Patch Embedding
+## 1. Patch Embedding  
 &emsp;Patch Embedding 可以看作是Patch Partition 和 Linear Embedding 的结合。图像进入layer之前，先通过卷积操作，将输入的尺寸由（B, H, W, C）变为(B, H // patch_size, W // patch_size, embed_dim)，再通过flatten和transpose操作变为(B, L, d)， 其中L = (H // patch_size)*(W // patch_size), d = embed_dim。在论文中patch_size=4， embed_dim=96。例：input_size (224, 224, 3) -> (56, 56, 96)。源码如下：
 
 ```python
-class PatchEmbed(nn.Module):
+class PatchEmbed(nn.Module):  
     r""" Image to Patch Embedding
 
     Args:
@@ -264,8 +264,8 @@ class PatchMerging(nn.Module):
         return x
 ```
 ## 5. Swin Transformer Block
-<img src="./figures/swin_03.png" style="zoom:80%;" align="center">.
+<img src="./figures/swin_03.png" style="zoom:70%;" align="center">.
 
-<img src="./figures/swin_04.png" style="zoom:80%;" align="center">.
+<img src="./figures/swin_04.png" style="zoom:50%;" align="center">.
 
 &emsp; Swin Transform Block如上图所示，包含Layer Norm、W-MSA、MLP和SW-MSA，而layer是多个Block的堆叠，整个模型是多个layer的堆叠。
